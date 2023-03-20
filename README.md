@@ -1,4 +1,4 @@
-# KEL102
+# Beschreibung
 Bibliothek zum schnellen Ansteuern von RND320 Steuerbare, elektronische Lasten auf Python-Basis
 zu verwenden in Python-Programmen von Fritsch und AAST.
 
