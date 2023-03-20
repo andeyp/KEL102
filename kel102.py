@@ -46,11 +46,18 @@ def LoadExit():
     LoadInit = False
     Load.close()
 
+# Ausgang anschalten
+def LoadOn():
+    if LoadType == "KEL":
+        Load.write(":INPut ON\n")
+    time.sleep(0.05)
+
 # Konstantspannung einstellen.
 def LoadSetCV(dValue):
     if LoadType == "KEL":
         Load.write(":FUNC CV\n")
         Load.write(":VOLT {0}V\n".format(str(dValue)))
+        LoadOn()
     time.sleep(0.05)
 
 # Konstantstrom einstellen.
@@ -58,12 +65,14 @@ def LoadSetCC(dValue):
     if LoadType == "KEL":
         Load.write(":FUNC CC\n")
         Load.write(":CURR {0}A\n".format(str(dValue)))
+        LoadOn()
     time.sleep(0.05)
 
 # Maximale Leistung einstellen.
 def LoadSetPower(dValue):
     if LoadType == "KEL":
         Load.write(":POW {0}W\n".format(str(dValue)))
+        LoadOn()
     time.sleep(0.05)
 
 # Spannung auslesen.
