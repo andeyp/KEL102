@@ -13,6 +13,9 @@ zu verwenden in Python-Programmen von Fritsch und AAST.
     LoadOn:
         Schaltet das Gerät bzw. den Ausgang mit den eingestellten Werten ein. Diese Funktion wird nach jeder Werteänderung automatisch aufgerufen. Soll nicht im eigenen Code verwendet werden.
 
+    LoadOff:
+        Schaltet das Gerät bzw. den Ausgang aus.
+
     LoadSetCV(dValue)
         dValue ist ein float. Einstellen der Spannung. Nach der Funktion wechselt die Last auf "ON"
 
