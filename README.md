@@ -4,33 +4,33 @@ zu verwenden in Python-Programmen von Fritsch und AAST.
 
 #### Befehle:
 
-'''LoadInit(Type, Port):'''
+```LoadInit(Type, Port):```
 Type wird in der Config.ini festgelegt. Default ist "KEL"
 Port wird in der Config.ini festgelegt. Port im Gerätemanager sichtbar
 
-'''LoadExit:'''
+```LoadExit:```
 Schaltet das Gerät aus, z.b. nach dem Beenden des Programmes oder nach einem Fehler um Ablauf und schließt den seriellen Port.
 
-'''LoadOn:'''
+```LoadOn:```
 Schaltet das Gerät bzw. den Ausgang mit den eingestellten Werten ein. Diese Funktion wird nach jeder Werteänderung automatisch aufgerufen. Soll nicht im eigenen Code verwendet werden.
 
-'''LoadOff:'''
+```LoadOff:```
 Schaltet das Gerät bzw. den Ausgang aus.
 
-'''LoadSetCV(dValue)'''
+```LoadSetCV(dValue)```
 dValue ist ein float. Einstellen der Spannung. Nach der Funktion wechselt die Last auf "ON"
 
-'''LoadSetCC(dValue)'''
+```LoadSetCC(dValue)```
 dValue ist ein float. EInstellen des Stromes. Nach der Funktion wechselt die Last auf "ON"
 
-'''LoadSetPower(dValue)'''
+```LoadSetPower(dValue)```
 dValue ist ein float. Einstellen der maximalen Leistung (in Watt).
 
-'''LoadGetVoltage'''
+```LoadGetVoltage```
 Liest den aktuellen Spannungswert aus. Rückgabe in Datenformat float in der Variable fltValue
 
-'''LoadGetCurrent'''
+```LoadGetCurrent```
 Liest den aktuellen Stromwert aus. Rückgabe in Datenformat float in der Variable fltValue
 
-'''LoadGetPower'''
+```LoadGetPower```
 Liest die aktuelle Leistung aus. Rückgabe in Datenformat float in der Variable fltValue
