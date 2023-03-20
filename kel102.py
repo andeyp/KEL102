@@ -52,6 +52,12 @@ def LoadOn():
         Load.write(":INPut ON\n")
     time.sleep(0.05)
 
+# Ausgang ausschalten
+def LoadOff():
+    if LoadType == "KEL":
+        Load.write(":INPut OFF\n")
+    time.sleep(0.05)
+
 # Konstantspannung einstellen.
 def LoadSetCV(dValue):
     if LoadType == "KEL":
