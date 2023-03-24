@@ -1,12 +1,8 @@
 # -*- coding: iso8859-15 -*-
 
-import os
 import serial
 import time
-import ConfigParser
-import struct
 
-from bitstring import BitArray
 
 LoadType = ""
 bLoadInit = False
@@ -30,7 +26,7 @@ def LoadInit(Type, Port):
         LoadInit = True
         if LoadType == "KEL":
             Load.write("*IDN?\n")
-            time.sleep(0.05)
+            time.sleep(0.5)
         return (True, "Electrical Load COM-Port initialized. \n")
     except Exception, e:
         return (False, "Electrical Load COM-Port error: {0} Program will be terminated.\n".format(str(e)))
@@ -42,7 +38,7 @@ def LoadExit():
     global LoadInit
     if LoadType == "KEL":
         Load.write(":INPut OFF\n")
-        time.sleep(0.05)
+        time.sleep(0.5)
     LoadInit = False
     Load.close()
 
@@ -50,13 +46,13 @@ def LoadExit():
 def LoadOn():
     if LoadType == "KEL":
         Load.write(":INPut ON\n")
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 # Ausgang ausschalten
 def LoadOff():
     if LoadType == "KEL":
         Load.write(":INPut OFF\n")
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 # Konstantspannung einstellen.
 def LoadSetCV(dValue):
@@ -64,7 +60,7 @@ def LoadSetCV(dValue):
         Load.write(":FUNC CV\n")
         Load.write(":VOLT {0}V\n".format(str(dValue)))
         LoadOn()
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 # Konstantstrom einstellen.
 def LoadSetCC(dValue):
@@ -72,26 +68,27 @@ def LoadSetCC(dValue):
         Load.write(":FUNC CC\n")
         Load.write(":CURR {0}A\n".format(str(dValue)))
         LoadOn()
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 # Maximale Leistung einstellen.
 def LoadSetPower(dValue):
     if LoadType == "KEL":
         Load.write(":POW {0}W\n".format(str(dValue)))
         LoadOn()
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 # Spannung auslesen.
 def LoadGetVoltage():
     if LoadType == "KEL":
+        Load.flushInput()
         Load.write(":MEAS:VOLT?\n")
-    time.sleep(0.05)
+    time.sleep(0.5)
     trys = 10
-    while trys >0 and Load.in_waiting() == 0:
+    while trys >0 and Load.inWaiting() == 0:
         time.sleep(0.05)
         trys -= 1
     if trys > 0:
-        fltValue = float(Load.readline(""))
+        fltValue = float(Load.readline())
         return (True, fltValue)
     else:
         fltValue = 0.0
@@ -100,15 +97,16 @@ def LoadGetVoltage():
 # Strom auslesen.
 def LoadGetCurrent():
     if LoadType == "KEL":
+        Load.flushInput()
         Load.write(":MEAS:CURR?\n")
-    time.sleep(0.05)
+    time.sleep(1)
     trys = 10
-    while trys > 0 and Load.in_waiting() == 0:
+    while trys > 0 and Load.inWaiting() == 0:
         time.sleep(0.05)
         trys -= 1
     if trys > 0:
-        fltValue = float(Load.readline(""))
-        return (True, fltValue)
+        rawValue = Load.readline()
+        return (True, rawValue)
     else:
         fltValue = 0.0
         return (False, fltValue)
@@ -116,14 +114,15 @@ def LoadGetCurrent():
 # Power auslesen.
 def LoadGetPower():
     if LoadType == "KEL":
+        Load.flushInput()
         Load.write("MEAS:POW?\n")
-    time.sleep(0.05)
+    time.sleep(0.5)
     trys = 10
-    while trys > 0 and Load.in_waiting() == 0:
+    while trys > 0 and Load.inWaiting() == 0:
         time.sleep(0.05)
         trys -= 1
     if trys > 0:
-        fltValue = float(Load.readLine(""))
+        fltValue = float(Load.readLine())
         return (True, fltValue)
     else:
         fltValue = 0.0
