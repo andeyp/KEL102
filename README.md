@@ -23,11 +23,11 @@ Schaltet das Gerät bzw. den Ausgang aus.
 
 ```LoadSetCV(dValue)```
 
-dValue ist ein float. Einstellen der Spannung. Nach der Funktion wechselt die Last auf "ON"
+dValue ist ein float. Einstellen der Spannung. Nach der Funktion wechselt die Last auf "ON".
 
 ```LoadSetCC(dValue)```
 
-dValue ist ein float. EInstellen des Stromes. Nach der Funktion wechselt die Last auf "ON"
+dValue ist ein float. EInstellen des Stromes. Nach der Funktion wechselt die Last auf "ON".
 
 ```LoadSetPower(dValue)```
 
@@ -35,12 +35,24 @@ dValue ist ein float. Einstellen der maximalen Leistung (in Watt).
 
 ```LoadGetVoltage```
 
-Liest den aktuellen Spannungswert aus. Rückgabe in Datenformat float in der Variable fltValue
+Liest den aktuellen Spannungswert aus. Rückgabe muss mit     
+    ```result, rawValue = kel102.LoadGetVoltage()```
+    ```rawValue = rawValue[:-1]```
+    ```fltValue = float(rawValue[:-1])```
+im eigentlichen Code umgewandelt werden. 
 
 ```LoadGetCurrent```
 
-Liest den aktuellen Stromwert aus. Rückgabe in Datenformat float in der Variable fltValue
+Liest den aktuellen Stromwert aus. Rückgabe muss mit     
+    ```result, rawValue = kel102.LoadGetCurrent()```
+    ```rawValue = rawValue[:-1]```
+    ```fltValue = float(rawValue[:-1])```
+im eigentlichen Code umgewandelt werden. 
 
 ```LoadGetPower```
 
-Liest die aktuelle Leistung aus. Rückgabe in Datenformat float in der Variable fltValue
+Liest die aktuelle Leistung aus. Rückgabe muss mit     
+    ```result, rawValue = kel102.LoadGetPower()```
+    ```rawValue = rawValue[:-1]```
+    ```fltValue = float(rawValue[:-1])```
+im eigentlichen Code umgewandelt werden. 
