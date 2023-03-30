@@ -88,7 +88,9 @@ def LoadGetVoltage():
         time.sleep(0.05)
         trys -= 1
     if trys > 0:
-        fltValue = float(Load.readline())
+        rawValue = Load.readline()
+        rawValue = rawValue[:-1]
+        fltValue = float(rawValue[:-1])
         return (True, fltValue)
     else:
         fltValue = 0.0
@@ -106,7 +108,9 @@ def LoadGetCurrent():
         trys -= 1
     if trys > 0:
         rawValue = Load.readline()
-        return (True, rawValue)
+        rawValue = rawValue[:-1]
+        fltValue = float(rawValue[:-1])
+        return (True, fltValue)
     else:
         fltValue = 0.0
         return (False, fltValue)
@@ -122,7 +126,9 @@ def LoadGetPower():
         time.sleep(0.05)
         trys -= 1
     if trys > 0:
-        fltValue = float(Load.readLine())
+        rawValue = Load.readline()
+        rawValue = rawValue[:-1]
+        fltValue = float(rawValue[:-1])
         return (True, fltValue)
     else:
         fltValue = 0.0
