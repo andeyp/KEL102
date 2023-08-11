@@ -1,24 +1,24 @@
 # Beschreibung
 Bibliothek zum schnellen Ansteuern von RND320 Steuerbare, elektronische Lasten auf Python-Basis
-zu verwenden in Python-Programmen von Fritsch und AAST.
+zu verwenden in Python-Programmen von Fritsch Elektronik GmbH und ASSA ABLOY Albstadt.
 
 #### Befehle:
 
 ```LoadInit(Type, Port):```
 Type wird in der Config.ini festgelegt. Default ist "KEL".
-Port wird in der Config.ini festgelegt. Port im Ger‰temanager sichtbar, z.b. 
+Port wird in der Config.ini festgelegt. Port im Ger√§temanager sichtbar, z.b. 
 ```[LOAD]```
 ```type = KEL```
 ```com = COM257```
 
 ```LoadExit:```
-Schaltet das Ger‰t aus, z.b. nach dem Beenden des Programmes oder nach einem Fehler um Ablauf und schlieﬂt den seriellen Port.
+Schaltet das Ger√§t aus, z.b. nach dem Beenden des Programmes oder nach einem Fehler um Ablauf und schlie√üt den seriellen Port.
 
 ```LoadOn:```
-Schaltet das Ger‰t bzw. den Ausgang mit den eingestellten Werten ein. Diese Funktion wird nach jeder Werte‰nderung automatisch aufgerufen. Soll nicht im eigenen Code verwendet werden.
+Schaltet das Ger√§t bzw. den Ausgang mit den eingestellten Werten ein. Diese Funktion wird nach jeder Werte√§nderung automatisch aufgerufen. Soll nicht im eigenen Code verwendet werden.
 
 ```LoadOff:```
-Schaltet das Ger‰t bzw. den Ausgang aus.
+Schaltet das Ger√§t bzw. den Ausgang aus.
 
 ```LoadSetCV(dValue)```
 dValue ist ein float. Einstellen der Spannung. Nach der Funktion wechselt die Last auf "ON".
@@ -30,21 +30,21 @@ dValue ist ein float. EInstellen des Stromes. Nach der Funktion wechselt die Las
 dValue ist ein float. Einstellen der maximalen Leistung (in Watt).
 
 ```LoadGetVoltage```
-Liest den aktuellen Spannungswert aus. R¸ckgabe muss mit     
+Liest den aktuellen Spannungswert aus. R√ºckgabe muss mit     
     ```result, rawValue = kel102.LoadGetVoltage()```
     ```rawValue = rawValue[:-1]```
     ```fltValue = float(rawValue[:-1])```
 im eigentlichen Code umgewandelt werden. 
 
 ```LoadGetCurrent```
-Liest den aktuellen Stromwert aus. R¸ckgabe muss mit     
+Liest den aktuellen Stromwert aus. R√ºckgabe muss mit     
     ```result, rawValue = kel102.LoadGetCurrent()```
     ```rawValue = rawValue[:-1]```
     ```fltValue = float(rawValue[:-1])```
 im eigentlichen Code umgewandelt werden. 
 
 ```LoadGetPower```
-Liest die aktuelle Leistung aus. R¸ckgabe muss mit     
+Liest die aktuelle Leistung aus. R√ºckgabe muss mit     
     ```result, rawValue = kel102.LoadGetPower()```
     ```rawValue = rawValue[:-1]```
     ```fltValue = float(rawValue[:-1])```
